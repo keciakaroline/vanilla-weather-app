@@ -1,6 +1,5 @@
-function showWeather(response) {
-  console.log(response.data);
-
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -10,8 +9,27 @@ function showWeather(response) {
     "Friday",
     "Saturday",
   ];
-  document.querySelector("#daytime").innerHTML = `${day} ${hour}:${minutes}`;
-  document.querySelector("#city").innerHTML = response.data.name;
+  let day = days[date.getDay()];
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${day} ${hours}:${minutes}`;
+}
+
+function showWeather(response) {
+  console.log(response.data);
+
+  document.querySelector("#daytime").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
+  document.querySelector(
+    "#city"
+  ).innerHTML = `${response.data.name}, ${response.data.sys.country}`;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
