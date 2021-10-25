@@ -15,31 +15,41 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <h1>Bochum, DE</h1>
-        <h3>Monday 18:00</h3>
-        <div class="row">
-          <div class="col-5">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/48/rain.png"
-              alt="Rain"
-            />
-            12°C | °F
+      <div class="weather-app-full">
+        <div class="weather-app">
+          <div class="overview">
+            <h1>Bochum, DE</h1>
+            <h3>Monday 18:00</h3>
           </div>
-          <div class="col-7">
-            <ul>
-              <li>Rain</li>
-              <li>Wind: 4 km/h</li>
-              <li>Humidity: 60%</li>
-            </ul>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/48/rain.png"
+                  alt="Rain"
+                  class="float-left"
+                />
+                <div class="float-left">
+                  <strong>10</strong><a href="#" class="units">°C</a> |
+                  <a href="#" class="units">°F</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Rain</li>
+                <li>Wind: 4 km/h</li>
+                <li>Humidity: 60%</li>
+              </ul>
+            </div>
           </div>
         </div>
+        <small>
+          <a href="#" target="_blank"> Open-source code </a> by Kécia Santos,
+          hosted on
+          <a href="https://www.netlify.com/" target="_blank"> Netlify</a>
+        </small>
       </div>
-      <small>
-        <a href="#" target="_blank"> Open-source code </a> by Kécia Santos,
-        hosted on
-        <a href="https://www.netlify.com/" target="_blank"> Netlify</a>
-      </small>
     </div>
     <script src="src/app.js"></script>
   </body>
