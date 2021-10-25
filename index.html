@@ -10,6 +10,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -18,7 +20,7 @@
       <div class="weather-app-full">
         <div class="weather-app">
           <div class="overview">
-            <h1>Bochum, DE</h1>
+            <h1 id="city"></h1>
             <h3>Monday 18:00</h3>
           </div>
           <div class="row">
@@ -30,7 +32,7 @@
                   class="float-left"
                 />
                 <div class="float-left">
-                  <strong>10</strong
+                  <strong id="temperature"></strong
                   ><span class="units"
                     ><a href="#">°C</a> | <a href="#">°F</a>
                   </span>
@@ -39,9 +41,9 @@
             </div>
             <div class="col-6">
               <ul>
-                <li>Rain</li>
-                <li>Wind: 4 km/h</li>
-                <li>Humidity: 60%</li>
+                <li id="description">Rain</li>
+                <li>Wind:<span id="wind"></span></li>
+                <li>Humidity: <span id="humidity"></span></li>
               </ul>
             </div>
           </div>
