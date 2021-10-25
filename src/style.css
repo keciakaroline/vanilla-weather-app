@@ -26,13 +26,33 @@ li {
   line-height: 24px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .overview {
   margin-bottom: 30px;
 }
 
-.units {
-  text-decoration: none;
+.weather-temperature img {
+  margin-right: 8px;
+  height: 65px;
+  width: 65px;
 }
+
+.weather-temperature strong {
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.weather-temperature .units {
+  position: relative;
+  font-size: 16px;
+  top: -30px;
+  margin-left: 2px;
+}
+
 .weather-app {
   padding: 30px;
   border: 1px solid #f6d4de;
