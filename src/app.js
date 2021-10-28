@@ -30,9 +30,11 @@ function showWeather(response) {
   document.querySelector(
     "#city"
   ).innerHTML = `${response.data.name}, ${response.data.sys.country}`;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+
+  celsiusTemperature = response.data.main.temp;
+
+  document.querySelector("#temperature").innerHTML =
+    Math.round(celsiusTemperature);
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -63,5 +65,30 @@ function handleForm(event) {
   search(cityInputElement.value);
 }
 
-search("Bochum");
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temperature");
+  fahrenheitElement.classList.remove("active");
+  celsiusElement.classList.add("active");
+  tempElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temperature");
+  fahrenheitElement.classList.add("active");
+  celsiusElement.classList.remove("active");
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
+}
+celsiusTemperature = null;
+
+let celsiusElement = document.querySelector("#celsius-link");
+celsiusElement.addEventListener("click", showCelsiusTemperature);
+
+let fahrenheitElement = document.querySelector("#fahrenheit-link");
+fahrenheitElement.addEventListener("click", showFahrenheitTemperature);
+
 document.querySelector("#search-form").addEventListener("submit", handleForm);
+
+search("Bochum");
