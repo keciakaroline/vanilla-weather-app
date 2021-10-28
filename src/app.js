@@ -50,8 +50,18 @@ function showWeather(response) {
     .setAttribute("alt", `${response.data.weather[0].description}`);
 }
 
-let apiKey = "ce9e9a1384d8ee7b166d7542086e2fdc";
-let city = "Bochum";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "ce9e9a1384d8ee7b166d7542086e2fdc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(showWeather);
+  axios.get(apiUrl).then(showWeather);
+}
+
+function handleForm(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("Bochum");
+document.querySelector("#search-form").addEventListener("submit", handleForm);
