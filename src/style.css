@@ -87,3 +87,16 @@ a {
 .float-left {
   float: left;
 }
+
+.weather-forecast {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.weather-forecast-date {
+  font-size: 18px;
+}
+
+.weather-forecast-temperatures {
+  font-size: 16px;
+}

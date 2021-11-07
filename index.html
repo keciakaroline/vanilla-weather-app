@@ -12,6 +12,10 @@
     />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    <script
+      src="https://kit.fontawesome.com/9855ed748f.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -59,12 +63,31 @@
             <div class="col-5">
               <ul>
                 <li id="description">Rain</li>
-                <li>Wind:<span id="wind"></span></li>
-                <li>Humidity: <span id="humidity"></span></li>
+                <li>Wind: <span id="wind"></span>km/h</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
               </ul>
             </div>
           </div>
+          <div class="weather-forecast">
+            <div class="row">
+              <div class="col-2">
+                <div class="weather-forecast-date">Sun</div>
+                <img
+                  src="http://openweathermap.org/img/wn/04n@2x.png"
+                  alt=""
+                  id="icon"
+                  width="50"
+                />
+                <div class="weather-forecast-temperatures">
+                  <strong>18°C</strong> <br />
+                  <i class="fas fa-long-arrow-alt-down"></i> <br />
+                  16°C
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <small>
           <a href="#" target="_blank"> Open-source code</a> by Kécia Santos,
           hosted on
