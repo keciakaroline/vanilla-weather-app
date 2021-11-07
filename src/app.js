@@ -81,6 +81,29 @@ function showFahrenheitTemperature(event) {
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   tempElement.innerHTML = Math.round(fahrenheitTemp);
 }
+
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+      <div class="weather-forecast-date">${day}</div>
+      <img src="http://openweathermap.org/img/wn/04n@2x.png" alt="" width="50" />
+      <div class="weather-forecast-temperatures">
+        <strong>18°C</strong> <br />
+        <i class="fas fa-long-arrow-alt-down"></i> <br />
+        16°C
+      </div>
+    </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 celsiusTemperature = null;
 
 let celsiusElement = document.querySelector("#celsius-link");
@@ -92,3 +115,4 @@ fahrenheitElement.addEventListener("click", showFahrenheitTemperature);
 document.querySelector("#search-form").addEventListener("submit", handleForm);
 
 search("Bochum");
+showForecast();
