@@ -1,5 +1,5 @@
 function formatDate(timestamp) {
-  let date = new Date(timestamp);
+  let date = new Date(timestamp * 1000);
   let days = [
     "Sunday",
     "Monday",
@@ -22,11 +22,7 @@ function formatDate(timestamp) {
 }
 
 function showWeather(response) {
-  console.log(response.data);
-
-  document.querySelector("#daytime").innerHTML = formatDate(
-    response.data.dt * 1000
-  );
+  document.querySelector("#daytime").innerHTML = formatDate(response.data.dt);
   document.querySelector(
     "#city"
   ).innerHTML = `${response.data.name}, ${response.data.sys.country}`;
@@ -109,7 +105,21 @@ function showForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+function searchLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "ce9e9a1384d8ee7b166d7542086e2fdc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
+  axios.get(apiUrl).then(showWeather);
+}
+
+function currentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
 document.querySelector("#search-form").addEventListener("submit", handleForm);
+
+document.querySelector("#image").addEventListener("click", currentLocation);
 
 search("Bochum");
